@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 
 /* ─── Helpers ─── */
-const SECTIONS = ["home", "experience", "projects", "skills", "achievements", "resume"];
+const SECTIONS = ["home", "experience", "projects", "skills", "achievements", "education", "resume"];
 
 function useTypewriter(texts, speed = 60, pause = 2000) {
   const [display, setDisplay] = useState("");
@@ -82,6 +82,7 @@ function Navbar({ active }) {
     { id: "projects", label: "Projects" },
     { id: "skills", label: "Skills" },
     { id: "achievements", label: "Achievements" },
+    { id: "education", label: "Education" },
     { id: "resume", label: "Resume" },
   ];
 
@@ -177,10 +178,10 @@ function Navbar({ active }) {
 function Hero() {
   const typed = useTypewriter(
     [
-      "Architecting scalable cloud solutions.",
-      "Building high-performance automation engines.",
-      "Engineering zero-downtime migrations.",
-      "Securing enterprise infrastructure.",
+      "Building reliable backend services at scale.",
+      "Shipping cloud-native infrastructure on AWS.",
+      "Designing systems that handle real traffic.",
+      "Writing code that runs in production.",
     ],
     50,
     2500
@@ -233,7 +234,7 @@ function Hero() {
               transition={{ duration: 0.7, delay: 0.4 }}
               className="font-mono text-emerald-400/80 text-sm sm:text-base"
             >
-              Backend Systems Specialist &amp; Infrastructure Engineer
+              Software Engineer — Backend &amp; Cloud Infrastructure
             </motion.p>
 
             <motion.div
@@ -252,10 +253,10 @@ function Hero() {
               transition={{ duration: 0.7, delay: 0.6 }}
               className="text-slate-400 text-sm sm:text-base max-w-lg leading-relaxed"
             >
-              A passionate Software Engineer with a focus on{" "}
-              <span className="text-white font-medium">Network Security</span>,{" "}
-              <span className="text-white font-medium">Cloud Migrations</span>, and{" "}
-              <span className="text-white font-medium">Automated Testing Infrastructure</span>.
+              Software Engineer with experience building{" "}
+              <span className="text-white font-medium">scalable backend systems</span>,{" "}
+              <span className="text-white font-medium">cloud infrastructure</span>, and{" "}
+              <span className="text-white font-medium">developer tooling</span> in fast-paced product environments.
             </motion.p>
 
             <motion.div
@@ -807,10 +808,71 @@ function Achievements() {
   );
 }
 
+/* ─── Education ─── */
+function Education() {
+  return (
+    <Section id="education" className="py-24 sm:py-32 px-4 sm:px-6">
+      <div className="max-w-5xl mx-auto">
+        <SectionHeader
+          eyebrow="// Education"
+          title="Academic Background"
+          subtitle="Where the foundation was built."
+        />
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-2xl mx-auto"
+        >
+          <div className="relative glass rounded-2xl overflow-hidden border border-slate-700/50 glow-violet">
+            {/* Gradient accent */}
+            <div className="h-1 bg-gradient-to-r from-violet-400 via-purple-400 to-pink-400" />
+
+            <div className="p-8 sm:p-10">
+              {/* University header */}
+              <div className="flex items-start gap-5 mb-8">
+                <motion.div
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  className="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-400/20 to-purple-400/20 border border-violet-400/30 flex items-center justify-center shrink-0"
+                >
+                  <GraduationCap size={26} className="text-violet-400" />
+                </motion.div>
+                <div>
+                  <h3 className="text-xl font-bold text-white">National Institute of Technology, Jamshedpur</h3>
+                  <p className="font-mono text-sm text-violet-400 mt-1">Bachelor of Technology (B.Tech)</p>
+                </div>
+              </div>
+
+              {/* Details grid */}
+              <div className="grid grid-cols-2 gap-4 mb-6">
+                <div className="rounded-xl bg-slate-800/40 border border-slate-700/40 p-4">
+                  <p className="text-xs text-slate-500 mb-1">Duration</p>
+                  <p className="font-mono font-bold text-white text-sm">2021 – 2025</p>
+                </div>
+                <div className="rounded-xl bg-slate-800/40 border border-slate-700/40 p-4">
+                  <p className="text-xs text-slate-500 mb-1">CGPA</p>
+                  <p className="font-mono font-bold text-white text-sm">8.24 / 10</p>
+                </div>
+              </div>
+
+              {/* Institute tag */}
+              <div className="flex items-center gap-2 pt-4 border-t border-slate-700/40">
+                <span className="w-1.5 h-1.5 rounded-full bg-violet-400/60" />
+                <p className="font-mono text-xs text-slate-500">Institute of National Importance</p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </Section>
+  );
+}
+
 /* ─── Resume ─── */
 function Resume() {
   const quickFacts = [
-    { label: "Experience", value: "1.5+ Years", icon: Zap },
+    { label: "Experience", value: "1+ Years", icon: Zap },
     { label: "Education", value: "B.Tech, NIT Jamshedpur", icon: GraduationCap },
     { label: "Focus", value: "Backend & Cloud Infra", icon: Cloud },
     { label: "Problems Solved", value: "600+ DSA", icon: Code2 },
@@ -849,7 +911,7 @@ function Resume() {
                 <div>
                   <h3 className="text-xl font-bold text-white">Anushka Bhandari</h3>
                   <p className="font-mono text-sm text-slate-400">
-                    Backend Systems Specialist &amp; Infrastructure Engineer
+                    Software Engineer — Backend &amp; Cloud Infrastructure
                   </p>
                 </div>
               </div>
@@ -1039,6 +1101,7 @@ export default function App() {
         <Projects />
         <Skills />
         <Achievements />
+        <Education />
         <Resume />
       </main>
       <Footer />
