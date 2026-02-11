@@ -4,11 +4,11 @@ import {
   Mail, Github, Linkedin, ExternalLink, Copy, Check, ChevronDown,
   Terminal, Shield, Cloud, Cog, BarChart3, Lock, Bot, Zap, Server,
   Menu, X, Award, GraduationCap, Mic, Code2, ArrowUpRight, Cpu,
-  Database, Globe, Layers, Monitor
+  Database, Globe, Layers, Monitor, FileText, Download, Eye
 } from "lucide-react";
 
 /* ─── Helpers ─── */
-const SECTIONS = ["home", "experience", "projects", "skills", "achievements"];
+const SECTIONS = ["home", "experience", "projects", "skills", "achievements", "resume"];
 
 function useTypewriter(texts, speed = 60, pause = 2000) {
   const [display, setDisplay] = useState("");
@@ -82,6 +82,7 @@ function Navbar({ active }) {
     { id: "projects", label: "Projects" },
     { id: "skills", label: "Skills" },
     { id: "achievements", label: "Achievements" },
+    { id: "resume", label: "Resume" },
   ];
 
   return (
@@ -806,6 +807,107 @@ function Achievements() {
   );
 }
 
+/* ─── Resume ─── */
+function Resume() {
+  const quickFacts = [
+    { label: "Experience", value: "1.5+ Years", icon: Zap },
+    { label: "Education", value: "B.Tech, NIT Jamshedpur", icon: GraduationCap },
+    { label: "Focus", value: "Backend & Cloud Infra", icon: Cloud },
+    { label: "Problems Solved", value: "600+ DSA", icon: Code2 },
+  ];
+
+  return (
+    <Section id="resume" className="py-24 sm:py-32 px-4 sm:px-6">
+      <div className="max-w-4xl mx-auto">
+        <SectionHeader
+          eyebrow="// Resume"
+          title="Get My Resume"
+          subtitle="Everything on one page — share this link with anyone."
+        />
+
+        {/* Main resume card */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="relative glass rounded-2xl overflow-hidden border border-slate-700/50 glow-emerald"
+        >
+          {/* Decorative gradient border top */}
+          <div className="h-1 bg-gradient-to-r from-emerald-400 via-cyan-400 to-violet-400" />
+
+          <div className="p-8 sm:p-10">
+            {/* Top section — icon + title + CTA */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-10">
+              <div className="flex items-center gap-4">
+                <motion.div
+                  whileHover={{ rotate: [0, -10, 10, -5, 0] }}
+                  transition={{ duration: 0.5 }}
+                  className="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-400/20 to-cyan-400/20 border border-emerald-400/30 flex items-center justify-center shrink-0"
+                >
+                  <FileText size={26} className="text-emerald-400" />
+                </motion.div>
+                <div>
+                  <h3 className="text-xl font-bold text-white">Anushka Bhandari</h3>
+                  <p className="font-mono text-sm text-slate-400">
+                    Backend Systems Specialist &amp; Infrastructure Engineer
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 w-full sm:w-auto">
+                <a
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium border border-slate-700 hover:border-emerald-400/50 text-slate-300 hover:text-emerald-400 rounded-lg transition-all duration-300 hover:bg-emerald-400/5"
+                >
+                  <Eye size={16} />
+                  View PDF
+                </a>
+                <a
+                  href="/resume.pdf"
+                  download
+                  className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-semibold bg-emerald-500 hover:bg-emerald-400 text-slate-950 rounded-lg transition-all duration-300 glow-emerald-hover"
+                >
+                  <Download size={16} />
+                  Download
+                </a>
+              </div>
+            </div>
+
+            {/* Quick facts bento grid */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+              {quickFacts.map((fact, i) => (
+                <motion.div
+                  key={fact.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  whileHover={{ y: -3, scale: 1.03 }}
+                  className="group rounded-xl bg-slate-800/40 border border-slate-700/40 p-4 hover:border-emerald-400/30 transition-all duration-300"
+                >
+                  <fact.icon size={18} className="text-emerald-400 mb-2 group-hover:scale-110 transition-transform" />
+                  <p className="font-mono font-bold text-white text-sm">{fact.value}</p>
+                  <p className="text-xs text-slate-500 mt-0.5">{fact.label}</p>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Bottom status */}
+            <div className="mt-8 pt-6 border-t border-slate-700/40 flex items-center justify-end">
+              <div className="flex items-center gap-1.5 text-xs text-slate-600">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400/50 animate-pulse" />
+                <span className="font-mono">PDF ready for download</span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </Section>
+  );
+}
+
 /* ─── Footer / Contact ─── */
 function Footer() {
   const [copied, setCopied] = useState(false);
@@ -937,6 +1039,7 @@ export default function App() {
         <Projects />
         <Skills />
         <Achievements />
+        <Resume />
       </main>
       <Footer />
     </div>
