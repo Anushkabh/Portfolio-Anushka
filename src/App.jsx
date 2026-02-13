@@ -274,7 +274,7 @@ function Hero() {
                 <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </a>
               <a
-                href="https://linkedin.com/in/Anushka"
+                href="https://www.linkedin.com/in/anushka-bhandari-163278224/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2.5 border border-slate-700 hover:border-emerald-400/50 text-slate-300 hover:text-emerald-400 font-medium text-sm rounded-lg transition-all duration-300 hover:bg-emerald-400/5"
@@ -283,7 +283,7 @@ function Hero() {
                 LinkedIn
               </a>
               <a
-                href="https://github.com/Anushka"
+                href="https://github.com/Anushkabh"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2.5 border border-slate-700 hover:border-slate-500 text-slate-300 hover:text-white font-medium text-sm rounded-lg transition-all duration-300 hover:bg-white/5"
