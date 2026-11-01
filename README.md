@@ -1,16 +1,27 @@
-# React + Vite
+# anushkabhandari.in
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio for Anushka Bhandari. Vite + React + Tailwind CSS v4, with Framer Motion for small animations.
 
-Currently, two official plugins are available:
+## Run it
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```sh
+npm install
+npm run dev      # local dev server
+npm run build    # production build in dist/
+npm run lint
+```
 
-## React Compiler
+## Updating content
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+All copy (bio, experience, projects, skills, education, achievements, links) lives in
+[`src/content.js`](src/content.js). Edit that file; the components in `src/App.jsx` render whatever is there.
 
-## Expanding the ESLint configuration
+The resume served by the "Resume" buttons is [`public/resume.pdf`](public/resume.pdf). Replace the file to update it.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Features
+
+- Light and dark themes (follows the system setting until toggled; the choice is remembered)
+- Command menu: press ⌘K / Ctrl+K to jump to a section, copy the email, or open links
+- Scroll progress bar, back-to-top button, active-section highlighting in the nav
+- Respects reduced-motion settings; skip-to-content link and keyboard focus styles
+- SEO and link-preview tags plus structured data (`index.html`)
